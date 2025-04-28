@@ -1,0 +1,25 @@
+@if (currentUser) {
+<header>
+  <div class="color">
+    <button
+      [classList]="'icon ' + currentUser.color"
+      (click)="toggleColorPicker()"
+    >
+      {{ currentUser.name[0].toUpperCase() }}
+    </button>
+    @if (showColorPicker){
+    <div class="color-picker">
+      <div class="color-option red" (click)="changeColor('red')"></div>
+      <div class="color-option purple" (click)="changeColor('purple')"></div>
+      <div class="color-option blue" (click)="changeColor('blue')"></div>
+      <div class="color-option green" (click)="changeColor('green')"></div>
+    </div>
+    }
+  </div>
+  <div class="info">
+    <h1>{{ currentUser.name }}</h1>
+    <p>{{ currentUser.email }}</p>
+  </div>
+    <app-button content="SAIR" (click)="diconnect()" />
+</header>
+}

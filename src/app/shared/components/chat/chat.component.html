@@ -1,0 +1,40 @@
+<div class="info-container">
+  <h1>{{ chatName }}</h1>
+  <button (click)="goToCall()">
+    <img src="svg/phone-icon.svg" />
+  </button>
+</div>
+<div class="message-container">
+  @for (message of messages; track $index) {
+  <div
+    [classList]="'card ' + getMessageColor(message)"
+    [id]="'message-' + message._id"
+  >
+    @if (getUserInfo(message.user)._id != currentUser?._id && currentChat.name)
+    {
+    <small class="info">
+      {{ getUserInfo(message.user).name }}
+    </small>
+    }
+    <div>
+      <p>{{ message.content || "" }}</p>
+      <small class="date">{{ message.createdAt | date : "HH:mm" }}</small>
+    </div>
+  </div>
+  }
+</div>
+<form class="input-container" (submit)="sendMessage()">
+  <input
+    type="text"
+    name="content"
+    id="content"
+    [(ngModel)]="createMessageDto.content"
+    autocomplete="off"
+    autocorrect="off"
+    autocapitalize="off"
+    spellcheck="false"
+  />
+  <button>
+    <img src="svg/send-icon.svg" />
+  </button>
+</form>

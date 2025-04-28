@@ -1,0 +1,15 @@
+<div class="input-box">
+  <input
+    #input
+    [type]="type"
+    [id]="id"
+    [name]="name"
+    [(ngModel)]="value"
+    [required]="required"
+    autocomplete="off"
+    autocorrect="off"
+    autocapitalize="off"
+    spellcheck="false"
+  />
+  <label [for]="id">{{ label }}</label>
+</div>

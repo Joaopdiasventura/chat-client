@@ -1,0 +1,29 @@
+<app-header />
+<div class="layout">
+  @if (currentUser?.isVerified) { @if (asideIsLoading) {
+  <aside class="aside"><loading /></aside>
+  } @else {
+  <app-aside
+    [chatsAndMessages]="chats"
+    [currentUser]="currentUser"
+    [invitesLength]="invites.length"
+    [findMessages]="findMessages.bind(this)"
+  />
+  } @if (mainIsLoading) {
+  <main class="main"><loading /></main>
+  } @else {
+  <app-main
+    [addingChat]="addingChat"
+    [currentCallId]="currentCallId"
+    [currentChat]="currentChat"
+    [currentMessages]="currentMessages"
+    [currentUser]="currentUser"
+    [findingInvites]="findingInvites"
+    [invites]="invites"
+    [declineInvite]="declineInvite.bind(this)"
+    [loadAllChats]="loadAllChats.bind(this)"
+  />
+  }} @else {
+  <h1>VERIFIQUE SEU EMAIL E VALIDE SUA CONTA</h1>
+  }
+</div>

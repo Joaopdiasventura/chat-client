@@ -1,0 +1,16 @@
+@if (isLoading) {
+<div class="loading-container">
+  <loading />
+</div>
+} @else if (invites.length > 0) {@for (invite of invites; track $index) {
+<div class="card">
+  <div>
+    <h2>{{ getUserInfo(invite).name }} - {{ getUserInfo(invite).email }}</h2>
+    <small>{{ invite.createdAt | date : "dd/MM/yyyy HH:mm" }}</small>
+  </div>
+  <app-button content="ACEITAR" (click)="accept(invite._id)" />
+  <app-button content="RECUSAR" (click)="declineInvite(invite._id)" />
+</div>
+}} @else {
+<h1>NENHUM CONVITE</h1>
+}

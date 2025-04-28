@@ -1,0 +1,24 @@
+<main>
+  @if (currentChat) {
+  <chat
+    [currentChat]="currentChat"
+    [currentUser]="currentUser"
+    [messages]="currentMessages"
+  />
+  } @else if (addingChat) {
+  <add-chat-form
+    [currentUser]="currentUser"
+    [declineInvite]="declineInvite.bind(this)"
+    [loadAllChats]="loadAllChats.bind(this)"
+  />
+  } @else if (findingInvites) {
+  <invite-list
+    [currentUser]="currentUser"
+    [declineInvite]="declineInvite"
+    [invites]="invites"
+    [loadAllChats]="loadAllChats.bind(this)"
+  />
+  } @else if (currentCallId) {
+  <call [currentCallId]="currentCallId" [currentUser]="currentUser" />
+  }
+</main>

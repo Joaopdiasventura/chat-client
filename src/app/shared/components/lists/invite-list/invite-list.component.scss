@@ -1,0 +1,44 @@
+@use "../../../../../styles/colors.scss" as colors;
+
+.card {
+  width: 100%;
+  display: flex;
+  gap: 1vw;
+  height: 12.5%;
+  background-color: colors.$background-secondary-color;
+  box-shadow: 0 0 0.3vw #000;
+  padding: 1vw;
+  border-radius: 1vw;
+  align-items: center;
+
+  div {
+    width: 75%;
+    display: flex;
+    height: 100%;
+    justify-content: space-evenly;
+    flex-direction: column;
+    h2 {
+      width: 90%;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      font-size: 1vw;
+    }
+    small {
+      font-size: 0.75vw;
+    }
+  }
+
+  app-button {
+    width: 10%;
+    height: 100%;
+  }
+}
+
+.loading-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

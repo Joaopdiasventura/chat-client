@@ -1,0 +1,44 @@
+@use "../../../styles/colors.scss" as colors;
+
+.layout {
+  width: 100vw;
+  height: 92.5vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1vw;
+  gap: 1vw;
+  z-index: 3;
+
+  .aside {
+    width: 17.5%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .main {
+    width: 82.5%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  app-aside,
+  app-main {
+    height: 100%;
+    box-shadow: 0 0 0.3vw #000;
+    border-radius: 1vw;
+    background-color: colors.$background-color;
+  }
+
+  app-aside {
+    width: 17.5%;
+  }
+
+  app-main {
+    width: 82.5%;
+  }
+}

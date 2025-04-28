@@ -1,0 +1,25 @@
+<aside>
+  <div class="card" (click)="addChat()">
+    <h2>INICIAR CONVERSA</h2>
+  </div>
+  <div class="card" (click)="goToInvite()">
+    <h2>CONVITES</h2>
+  </div>
+  @for (element of chatsAndMessages; track $index) {
+  <div
+    [classList]="'card ' + getChatColor(element.chat, element.message)"
+    (click)="goToChat(element.chat._id)"
+  >
+    <h2>{{ getChatName(element.chat) }}</h2>
+    <p>{{ getMessageContent(element.message) }}</p>
+    @if (getUserInfo(element.message)._id != currentUser?._id &&
+    element.message) {
+    <small>
+      {{ getChatInfo(element.chat, element.message) }}
+    </small>
+    } @else {
+    <small>você</small>
+    }
+  </div>
+  }
+</aside>

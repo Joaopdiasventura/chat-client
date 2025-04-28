@@ -1,0 +1,73 @@
+@use "../../../../styles/colors.scss" as colors;
+
+@keyframes neon-light {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 0.2vw #{colors.$primary-color})
+      drop-shadow(0 0 0.4vw #{colors.$primary-color});
+  }
+  50% {
+    filter: drop-shadow(0 0 0.4vw #{colors.$primary-color})
+      drop-shadow(0 0 0.8vw #{colors.$primary-color});
+  }
+}
+
+@keyframes wave {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+.btn {
+  color: colors.$text-color;
+  width: 100%;
+  height: 100%;
+  font-size: 1.25vw;
+  border: none;
+  border-radius: 0.5vw;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 1vh 1vw;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    90deg,
+    colors.$primary-color,
+    colors.$second-color,
+    colors.$primary-color
+  );
+  background-size: 200% 200%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(
+      circle at center,
+      rgba(colors.$primary-color, 0.4),
+      transparent 70%
+    );
+    opacity: 0;
+    transition: opacity 0.5s, transform 0.5s;
+    z-index: -1;
+  }
+
+  &:hover {
+    animation: wave 2s linear infinite,
+      neon-light 1.5s ease-in-out infinite alternate;
+    transform: scale(1.1);
+    box-shadow: 0 0.5vw 1vw rgba(0, 0, 0, 0.2);
+
+    &::before {
+      opacity: 1;
+      transform: translate(25%, 25%) scale(1.2);
+    }
+  }
+}
